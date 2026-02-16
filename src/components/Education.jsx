@@ -75,7 +75,7 @@ const Education = () => {
               Academic Excellence
             </h3>
             <p className="text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto">
-              Consistent academic performer with a CGPA of 9.171/10 in Computer Science Engineering, 
+              Consistent academic performer with a CGPA of 9.17/10 in Computer Science Engineering, 
               recognized as 'Topper of Topper' for three consecutive years. Strong foundation in 
               programming, algorithms, and software engineering principles.
             </p>
