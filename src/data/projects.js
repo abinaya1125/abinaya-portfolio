@@ -10,7 +10,7 @@ export const projects = [
     title: 'SQL Data Analysis Project',
     description: 'Comprehensive data analysis project using complex SQL queries, joins, and aggregations to extract meaningful insights from large datasets.',
     techStack: ['SQL', 'Data Analysis', 'MySQL'],
-    githubLink: 'https://github.com',
+    githubLink: 'https://github.com/abinaya1125/SQL_Operations',
     image: 'fas fa-chart-bar'
   },
   {
