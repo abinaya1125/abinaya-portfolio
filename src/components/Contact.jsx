@@ -28,7 +28,7 @@ Email: ${formData.email}
 Message:
 ${formData.message}`);
 
-    const mailtoLink = `mailto:abinayasatheesh2005@gmail.com?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:abinayas927@gmail.com?subject=${subject}&body=${body}`;
     
     // Open email client
     window.location.href = mailtoLink;

@@ -2,6 +2,7 @@ import React, { useEffect, useState, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import ThemeToggle from './components/ThemeToggle';
+import ParticleCursor from './components/ParticleCursor';
 
 // Lazy load all components for better performance
 const Hero = lazy(() => import('./components/Hero'));
@@ -49,6 +50,9 @@ function App() {
 
   return (
     <div className="min-h-screen relative">
+      {/* Particle Cursor Effect */}
+      <ParticleCursor />
+
       {/* Progress Bar */}
       <motion.div
         className="progress-bar"

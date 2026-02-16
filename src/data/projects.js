@@ -15,9 +15,9 @@ export const projects = [
   },
   {
     title: 'Library Management System',
-    description: 'A complete library management system built with Java and Spring Boot, featuring book management, user authentication, and transaction tracking.',
-    techStack: ['Java', 'Spring Boot', 'MySQL', 'MVC'],
-    githubLink: 'https://github.com',
+    description: 'A complete library management system built with Java and Spring, featuring book management, user authentication, and transaction tracking.',
+    techStack: ['Java', 'Spring', 'MySQL', 'MVC'],
+    githubLink: 'https://github.com/abinaya1125/LibraryManagementSystem.git',
     image: 'fas fa-book'
   }
 ];

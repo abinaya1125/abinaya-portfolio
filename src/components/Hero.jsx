@@ -126,8 +126,8 @@ const Hero = () => {
             {[
               { href: 'https://www.linkedin.com/in/abinayas4821/', icon: 'fab fa-linkedin' },
               { href: 'https://leetcode.com/u/Abinaya1125/', icon: 'fas fa-laptop-code' },
-              { href: 'https://github.com', icon: 'fab fa-github' },
-              { href: 'mailto:abinayasatheesh2005@gmail.com', icon: 'fas fa-envelope' }
+              { href: 'https://github.com/abinaya1125', icon: 'fab fa-github' },
+              { href: 'mailto:abinayas927@gmail.com', icon: 'fas fa-envelope' }
             ].map((social, index) => (
               <motion.a
                 key={index}

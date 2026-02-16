@@ -13,10 +13,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { name: 'GitHub', icon: 'fab fa-github', href: '#' },
-    { name: 'LinkedIn', icon: 'fab fa-linkedin', href: '#' },
+    { name: 'GitHub', icon: 'fab fa-github', href: 'https://github.com/abinaya1125' },
+    { name: 'LinkedIn', icon: 'fab fa-linkedin', href: 'https://www.linkedin.com/in/abinayas4821/' },
     { name: 'Twitter', icon: 'fab fa-twitter', href: '#' },
-    { name: 'Email', icon: 'fas fa-envelope', href: '#' }
+    { name: 'Email', icon: 'fas fa-envelope', href: 'mailto:abinayas927@gmail.com' }
   ];
 
   const handleNavClick = (href) => {
@@ -107,11 +107,11 @@ const Footer = () => {
             <div className="space-y-2 text-gray-400">
               <p className="flex items-center justify-center md:justify-end space-x-2">
                 <i className="fas fa-envelope text-purple-400"></i>
-                <span>abinaya@example.com</span>
+                <span>abinayas927@gmail.com</span>
               </p>
               <p className="flex items-center justify-center md:justify-end space-x-2">
                 <i className="fas fa-phone text-purple-400"></i>
-                <span>+91 12345 67890</span>
+                <span>+91 78714 32250</span>
               </p>
               <p className="flex items-center justify-center md:justify-end space-x-2">
                 <i className="fas fa-map-marker-alt text-purple-400"></i>
