@@ -1,8 +1,7 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Stars, OrbitControls, Text } from '@react-three/drei';
+import { Float, Stars, OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
-import FloatingText3D from './FloatingText3D';
 
 // Floating 3D Cube Component
 function FloatingCube({ position, color, speed = 1, scale = 1 }) {
@@ -156,10 +155,6 @@ function FloatingOctahedron({ position, color, speed = 1, scale = 1 }) {
 function ThreeDBackground() {
   return (
     <>
-      {/* Floating 3D Text - Your Name */}
-      <FloatingText3D text="Abinaya" position={[0, 2, -2]} color="#667eea" />
-      <FloatingText3D text="Portfolio" position={[0, 1, -2]} color="#f472b6" />
-      
       {/* Primary Floating Objects - Larger and more prominent */}
       <FloatingCube position={[-4, 2, -2]} color="#667eea" speed={0.8} scale={1.2} />
       <FloatingSphere position={[3, 3, -1]} color="#f472b6" speed={1.2} scale={1.1} />
