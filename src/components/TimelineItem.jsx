@@ -4,13 +4,46 @@ import { motion } from 'framer-motion';
 const TimelineItem = ({ item, index }) => {
   const isLeft = index % 2 === 0;
 
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: isLeft ? -100 : 100,
+      scale: 0.8
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        delay: index * 0.2
+      }
+    }
+  };
+
+  const dotVariants = {
+    hidden: { 
+      scale: 0,
+      opacity: 0
+    },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delay: index * 0.2 + 0.3,
+        type: "spring",
+        stiffness: 200
+      }
+    }
+  };
+
   return (
     <motion.div
       className="flex items-center mb-12 relative"
-      initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.2 }}
-      viewport={{ once: true }}
+      variants={itemVariants}
+      viewport={{ once: true, margin: "-50px" }}
     >
       <div className={`w-full md:w-1/2 ${isLeft ? 'md:pr-8 md:text-right' : 'md:ml-auto md:pl-8'}`}>
         <motion.div
@@ -19,22 +52,37 @@ const TimelineItem = ({ item, index }) => {
             scale: 1.02,
             boxShadow: '0 25px 50px rgba(0, 0, 0, 0.15)'
           }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
+          viewport={{ once: true, margin: "-50px" }}
         >
           <div className={`flex items-center ${isLeft ? 'md:justify-end' : ''} mb-3 flex-wrap gap-2`}>
             <motion.i 
               className={`fas ${item.type === 'work' ? 'fa-briefcase' : 'fa-graduation-cap'} text-primary mr-3`}
               whileHover={{ scale: 1.2, rotate: 10 }}
               transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, rotate: -180 }}
+              whileInView={{ opacity: 1, rotate: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
             />
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <motion.span 
+              className="text-sm text-gray-500 dark:text-gray-400"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: index * 0.2 + 0.2 }}
+              viewport={{ once: true, margin: "-50px" }}
+            >
               {item.period}
-            </span>
+            </motion.span>
             {item.badge && (
               <motion.span
                 className="px-2 py-1 bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 text-yellow-800 dark:text-yellow-200 text-xs rounded-full font-semibold border border-yellow-300 dark:border-yellow-600"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.3 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.2 + 0.5 }}
+                viewport={{ once: true, margin: "-50px" }}
+                whileHover={{ scale: 1.05 }}
               >
                 {item.badge}
               </motion.span>
@@ -45,13 +93,22 @@ const TimelineItem = ({ item, index }) => {
             className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
           >
             {item.title}
           </motion.h3>
           
-          <p className="text-primary font-semibold mb-3">
+          <motion.p 
+            className="text-primary font-semibold mb-3"
+            initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.2 + 0.4 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {item.institution || item.company}
-          </p>
+          </motion.p>
 
           {/* CGPA or Percentage Badge */}
           {(item.cgpa || item.percentage) && (
@@ -62,8 +119,9 @@ const TimelineItem = ({ item, index }) => {
                   : 'bg-primary/10 text-primary'
               }`}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: index * 0.2 + 0.6 }}
+              viewport={{ once: true, margin: "-50px" }}
               whileHover={{ scale: 1.05 }}
             >
               <i className="fas fa-star mr-2"></i>
@@ -71,9 +129,15 @@ const TimelineItem = ({ item, index }) => {
             </motion.div>
           )}
           
-          <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+          <motion.p 
+            className="text-gray-600 dark:text-gray-400 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.2 + 0.7 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             {item.description}
-          </p>
+          </motion.p>
         </motion.div>
       </div>
       
@@ -83,10 +147,8 @@ const TimelineItem = ({ item, index }) => {
             ? 'bg-gradient-to-r from-blue-500 to-purple-600' 
             : 'bg-primary'
         }`}
-        initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        transition={{ duration: 0.3, delay: 0.4 }}
-        viewport={{ once: true }}
+        variants={dotVariants}
+        viewport={{ once: true, margin: "-50px" }}
       />
     </motion.div>
   );

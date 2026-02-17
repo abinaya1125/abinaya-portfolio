@@ -1,10 +1,10 @@
 export const projects = [
   {
-    title: 'Flight Fare Predictor',
-    description: 'A Java-based machine learning application that predicts flight fares using historical data and various features like route, time, and airline.',
-    techStack: ['Java', 'Machine Learning', 'Data Analysis'],
+    title: 'Core Banking System',
+    description: 'A Java based banking application which does the real time core functions of banking',
+    techStack: ['Java', 'MySQL', 'Spring Framework'],
     githubLink: 'https://github.com',
-    image: 'fas fa-plane'
+    image: 'fas fa-university'
   },
   {
     title: 'SQL Data Analysis Project',
