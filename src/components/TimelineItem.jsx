@@ -92,7 +92,6 @@ const TimelineItem = ({ item, index }) => {
           <motion.h3 
             className="text-xl font-bold mb-2 text-gray-800 dark:text-gray-200"
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
