@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import ThemeToggle from './components/ThemeToggle';
 import ParticleCursor from './components/ParticleCursor';
+import ThreeDScene from './components/ThreeDScene';
 
 // Lazy load all components for better performance
 const Hero = lazy(() => import('./components/Hero'));
@@ -50,8 +51,17 @@ function App() {
 
   return (
     <div className="min-h-screen relative">
+      {/* 3D Scene Background */}
+      <ThreeDScene />
+      
       {/* Particle Cursor Effect */}
       <ParticleCursor />
+      
+      {/* Theme Toggle */}
+      <ThemeToggle />
+      
+      {/* Navigation */}
+      <Navbar />
 
       {/* Progress Bar */}
       <motion.div
@@ -62,130 +72,124 @@ function App() {
         transition={{ duration: 0.2 }}
       />
 
-      {/* Theme Toggle */}
-      <ThemeToggle />
-
-      {/* Navbar */}
-      <Navbar />
-
       {/* Main Content - Optimized loading strategy */}
       <main className="relative z-10">
-        <AnimatePresence mode="wait">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          >
-            {/* Critical sections - loaded immediately */}
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <Hero />
-              </motion.div>
-            </Suspense>
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              {/* Critical sections - loaded immediately */}
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <Hero />
+                </motion.div>
+              </Suspense>
+
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.05 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <About />
+                </motion.div>
+              </Suspense>
+
+              {/* Other sections - optimized lazy loading */}
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <Education />
+                </motion.div>
+              </Suspense>
+
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.15 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <Skills />
+                </motion.div>
+              </Suspense>
 
             <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.05 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <About />
-              </motion.div>
-            </Suspense>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.2 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <SoftSkills />
+                </motion.div>
+              </Suspense>
 
-            {/* Other sections - optimized lazy loading */}
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <Education />
-              </motion.div>
-            </Suspense>
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.25 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <LeetCodeStats />
+                </motion.div>
+              </Suspense>
 
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.15 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <Skills />
-              </motion.div>
-            </Suspense>
-
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.2 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <SoftSkills />
-              </motion.div>
-            </Suspense>
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <Projects />
+                </motion.div>
+              </Suspense>
 
             <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.25 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <LeetCodeStats />
-              </motion.div>
-            </Suspense>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.35 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <Timeline />
+                </motion.div>
+              </Suspense>
 
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <Projects />
-              </motion.div>
-            </Suspense>
-
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.35 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <Timeline />
-              </motion.div>
-            </Suspense>
-
-            <Suspense fallback={<SectionLoader />}>
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut", delay: 0.4 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="no-lag"
-              >
-                <Contact />
-              </motion.div>
-            </Suspense>
+              <Suspense fallback={<SectionLoader />}>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: "easeOut", delay: 0.4 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="no-lag"
+                >
+                  <Contact />
+                </motion.div>
+              </Suspense>
           </motion.div>
         </AnimatePresence>
       </main>
