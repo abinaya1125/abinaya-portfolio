@@ -10,7 +10,9 @@ const LeetCodeStats = () => {
     const fetchLeetCodeStats = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://leetcode-stats-api.herokuapp.com/Abinaya1125');
+        setError(null);
+        
+        const response = await fetch('https://alfa-leetcode-api.onrender.com/Abinaya1125/profile');
         
         if (!response.ok) {
           throw new Error('Failed to fetch LeetCode stats');
